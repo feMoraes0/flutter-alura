@@ -6,6 +6,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.green[900],
+        accentColor: Colors.blueAccent[700],
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.blueAccent[700],
+          textTheme: ButtonTextTheme.primary
+        )
+      ),
       home: ListTransfers(),
       debugShowCheckedModeBanner: false,
     );
@@ -14,9 +22,7 @@ class App extends StatelessWidget {
 
 // Form of Transfers
 
-class FormTransfers extends StatefulWidget {
-
-
+class FormTransfers extends StatefulWidget  {
   @override
   State<StatefulWidget> createState() {
     return FormTransfersState();
@@ -60,8 +66,7 @@ class FormTransfersState extends State<FormTransfers> {
             ),
             RaisedButton(
               onPressed: () => _createTransfer(context),
-              child: Text("Confirm"),
-              color: Colors.blue[100],
+              child: Text("Confirm")
             )
           ],
         )
