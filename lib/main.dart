@@ -1,30 +1,48 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Transferências")),
-        body: ListTransfers(),
-        floatingActionButton: FloatingActionButton(child: Icon(Icons.add)),
-      ),
+      home: FormTransfers(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
+// Form of Transfers
+
+class FormTransfers extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("New Transfer")
+      ),
+    );
+  }
+}
+
+
+// List of Transfers
+
 class ListTransfers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        TransferCard(Transfer(100.0, 10000)),
-        TransferCard(Transfer(200.0, 10000)),
-        TransferCard(Transfer(300.0, 10000)),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Transfers")
+      ),
+      body: Column(
+        children: <Widget>[
+          TransferCard(Transfer(100.0, 10000)),
+          TransferCard(Transfer(200.0, 10000)),
+          TransferCard(Transfer(300.0, 10000)),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.add), onPressed: null,),
     );
   }
 }
