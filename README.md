@@ -1,16 +1,28 @@
-# bytebank
+<p align="center">
+  <img src="https://www.alura.com.br/assets/img/alura-logo.1567425680.svg">
+</p>
 
-A new Flutter project.
+A new Flutter project following the inscructions on Alura Course available [here](https://www.alura.com.br/curso-online-flutter-fundamentos).
+
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter ~~application~~ developer.
 
-A few resources to get you started if this is your first Flutter project:
+## How to use
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```#!bash
+# Clone this repository
+$ git clone https://github.com/feMoraes0/flutter_alura.git
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Acces your new folder
+$ cd flutter_alura
+
+# Install dependencies
+$ flutter packages get
+
+# Run, flutter! Run!
+$ flutter run
+```
+
