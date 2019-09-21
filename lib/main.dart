@@ -14,39 +14,24 @@ class App extends StatelessWidget {
 
 // Form of Transfers
 
-class FormTransfers extends StatelessWidget {
+class FormTransfers extends StatefulWidget {
+
+
+  @override
+  State<StatefulWidget> createState() {
+    return FormTransfersState();
+  }
+}
+
+
+
+class FormTransfersState extends State<FormTransfers> {
   final TextEditingController _accountNumberController = TextEditingController();
   final TextEditingController _valueController = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("New Transfer")),
-      body: Column(
-        children: <Widget>[
-          Editor(
-            controller: _accountNumberController,
-            title: "Account Number",
-            tip: "0000",
-          ),
-          Editor(
-            controller: _valueController,
-            title:"Value",
-            tip: "0.00",
-            icon: Icons.monetization_on,
-          ),
-          RaisedButton(
-            onPressed: () => _createTransfer(context),
-            child: Text("Confirm"),
-            color: Colors.blue[100],
-          )
-        ],
-      )
-    );
-  }
-
   void _createTransfer(context) {
-    final int accountNumber = int.tryParse(_accountNumberController.text);
+    final int accountNumber = int.tryParse(_accountNumberController
+      .text);
     final double value = double.tryParse(_valueController.text);
     if (accountNumber != null && value != null) {
       final newTransfer = Transfer(value, accountNumber);
@@ -54,6 +39,37 @@ class FormTransfers extends StatelessWidget {
       Navigator.pop(context, newTransfer);
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("New Transfer")),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Editor(
+              controller: _accountNumberController,
+              title: "Account Number",
+              tip: "0000",
+            ),
+            Editor(
+              controller: _valueController,
+              title: "Value",
+              tip: "0.00",
+              icon: Icons.monetization_on,
+            ),
+            RaisedButton(
+              onPressed: () => _createTransfer(context),
+              child: Text("Confirm"),
+              color: Colors.blue[100],
+            )
+          ],
+        )
+      )
+    );
+  }
+
+
 }
 
 class Editor extends StatelessWidget {
@@ -90,9 +106,8 @@ class Editor extends StatelessWidget {
 // List of Transfers
 
 class ListTransfers extends StatefulWidget {
-
-  final List<Transfer> _transfers = List();
   // deveria estar no state se fosse algo não constante
+  final List<Transfer> _transfers = List();
 
   @override
   State<StatefulWidget> createState() {
@@ -125,10 +140,13 @@ class ListTransfersState extends State<ListTransfers>{
           // ativa quando retornar a pagina após navegação
           // pop notifica o future que vai para o 'then'
           future.then((receivedTransfer) {
-            widget._transfers.add(receivedTransfer);
+            if(receivedTransfer != null) {
+              setState(() {
+                widget._transfers.add(receivedTransfer);
+              });
+            }
             debugPrint("future.then");
             debugPrint(receivedTransfer.toString());
-
           });
         },
       ),
