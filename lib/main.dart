@@ -21,6 +21,41 @@ class FormTransfers extends StatelessWidget {
       appBar: AppBar(
         title: Text("New Transfer")
       ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: TextField(
+              style: TextStyle(
+                fontSize: 20.0
+              ),
+              decoration: InputDecoration(
+                labelText: "Account number",
+                hintText: "0000"
+              ),
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: TextField(
+              style: TextStyle(
+                fontSize: 20.0
+              ),
+              decoration: InputDecoration(
+                icon: Icon(Icons.monetization_on),
+                labelText: "Value",
+                hintText: "0.00"
+              ),
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          RaisedButton(
+            onPressed: null,
+            child: Text("Confirm"),
+          )
+        ],
+      )
     );
   }
 }
@@ -58,7 +93,7 @@ class TransferCard extends StatelessWidget {
       child: ListTile(
         leading: Icon(Icons.monetization_on),
         title: Text(_transfer.value.toString()),
-        subtitle: Text(_transfer.billNumber.toString()),
+        subtitle: Text(_transfer.accountNumber.toString()),
       ),
     );
   }
@@ -66,8 +101,8 @@ class TransferCard extends StatelessWidget {
 
 class Transfer {
   final double value;
-  final int billNumber;
+  final int accountNumber;
 
-  Transfer(this.value, this.billNumber);
+  Transfer(this.value, this.accountNumber);
 }
 
