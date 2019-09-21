@@ -33,7 +33,7 @@ class FormTransfers extends StatelessWidget {
             controller: _valueController,
             title:"Value",
             tip: "0.00",
-            icon: Icons.monetization_on
+            icon: Icons.monetization_on,
           ),
           RaisedButton(
             onPressed: () => _createTransfer(context),
@@ -89,18 +89,26 @@ class Editor extends StatelessWidget {
 
 // List of Transfers
 
-class ListTransfers extends StatelessWidget {
+class ListTransfers extends StatefulWidget {
 
   final List<Transfer> _transfers = List();
+  // deveria estar no state se fosse algo não constante
 
+  @override
+  State<StatefulWidget> createState() {
+    return ListTransfersState();
+  }
+}
+
+class ListTransfersState extends State<ListTransfers>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Transfers")),
       body: ListView.builder(
-        itemCount: _transfers.length,
+        itemCount: widget._transfers.length,
         itemBuilder: (BuildContext context, int index) {
-          return TransferCard(_transfers[index]);
+          return TransferCard(widget._transfers[index]);
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -117,7 +125,7 @@ class ListTransfers extends StatelessWidget {
           // ativa quando retornar a pagina após navegação
           // pop notifica o future que vai para o 'then'
           future.then((receivedTransfer) {
-            _transfers.add(receivedTransfer);
+            widget._transfers.add(receivedTransfer);
             debugPrint("future.then");
             debugPrint(receivedTransfer.toString());
 
