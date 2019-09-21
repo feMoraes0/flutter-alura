@@ -15,6 +15,10 @@ class App extends StatelessWidget {
 // Form of Transfers
 
 class FormTransfers extends StatelessWidget {
+
+  final TextEditingController _accountNumberController = TextEditingController();
+  final TextEditingController _valueController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +30,7 @@ class FormTransfers extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: TextField(
+              controller: _accountNumberController,
               style: TextStyle(
                 fontSize: 20.0
               ),
@@ -39,6 +44,7 @@ class FormTransfers extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: TextField(
+              controller: _valueController,
               style: TextStyle(
                 fontSize: 20.0
               ),
@@ -51,8 +57,16 @@ class FormTransfers extends StatelessWidget {
             ),
           ),
           RaisedButton(
-            onPressed: null,
+            onPressed: () {
+              final int accountNumber = int.tryParse(_accountNumberController.text);
+              final double value = double.tryParse(_valueController.text);
+              if(accountNumber != null && value != null) {
+                final newTransfer = Transfer(value, accountNumber);
+                debugPrint(newTransfer.toString());
+              }
+            },
             child: Text("Confirm"),
+            color: Colors.blue[100]
           )
         ],
       )
@@ -104,5 +118,10 @@ class Transfer {
   final int accountNumber;
 
   Transfer(this.value, this.accountNumber);
+
+  @override
+  String toString() {
+    return "Transfer{value: $value, accountNumber: $accountNumber}";
+  }
 }
 
