@@ -2,7 +2,7 @@
   <img src="https://www.alura.com.br/assets/img/alura-logo.1567425680.svg">
 </p>
 
-A new Flutter project following the instructions on Alura Course available [here](https://www.alura.com.br/curso-online-flutter-fundamentos).
+A new Flutter project following the Alura Course, available [here](https://www.alura.com.br/curso-online-flutter-fundamentos).
 
 
 
