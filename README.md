@@ -2,7 +2,7 @@
   <img src="https://www.alura.com.br/assets/img/alura-logo.1567425680.svg">
 </p>
 
-A new Flutter project following the inscructions on Alura Course available [here](https://www.alura.com.br/curso-online-flutter-fundamentos).
+A new Flutter project following the instructions on Alura Course available [here](https://www.alura.com.br/curso-online-flutter-fundamentos).
 
 
 
@@ -24,6 +24,7 @@ This project is a starting point for a Flutter ~~application~~ developer.
 
 
 ## How to use
+To clone and run this application, you'll need [Git](https://git-scm.com/downloads) and [Flutter](https://flutter.dev/docs/get-started/install) installed on your computer. From your command line:
 
 ```#!bash
 # Clone this repository
@@ -39,3 +40,6 @@ $ flutter packages get
 $ flutter run
 ```
 
+## Contact
+  - <a target="_blank" href="https://www.linkedin.com/in/fernando-moraes-48a26916a/">LinkedIn</a>
+  - <a target="_blank" href="mailto:fernandomoraes.lopes@gmail.com">E-mail</a>
